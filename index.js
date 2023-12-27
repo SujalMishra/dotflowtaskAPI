@@ -1,7 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const app = express();
-const port = 3000;
+const port = 4000;
 
 app.use(express.json());
 
@@ -34,12 +34,7 @@ app.post("/newsdate", async (req, res) => {
     res.json(resp.data.articles);
 });
 
-app.post("/reddit", async (req, res) => {
-    const {keyword} = req.body;
-    const resp = await axios.get(`https://www.reddit.com/r/all/search.json?q=${keyword}`);
-    console.log(resp.data.data.children);
-    res.json(resp.data.data.children);
-});
+
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
